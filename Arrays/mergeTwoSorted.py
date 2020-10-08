@@ -3,23 +3,19 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        iOne = 0
-        iTwo = 0
-        aux = [0]*(m+n)
-        for i in range(m+n):
-            if iOne >= m:
-                aux[i] = nums2[iTwo]
-                iTwo += 1
+        iO = m
+        iT = n
+        for i in range(m+n-1, -1, -1):
+            if iO == 0:
+                nums1[i] = nums2[iT-1]
+                iT -= 1
                 continue
-            elif iTwo >= n:
-                aux[i] = nums1[iOne]
-                iOne += 1
-                continue
-            if nums1[iOne] < nums2[iTwo]:
-                aux[i] = nums1[iOne]
-                iOne += 1
+            elif iT == 0:
+                nums1[i] = nums1[iO-1]
+                iO -= 1
+            if nums1[iO-1] > nums2[iT-1]:
+                nums1[i] = nums1[iO-1]
+                iO -= 1
             else:
-                aux[i] = nums2[iTwo]
-                iTwo += 1
-        for i in range(m+n):
-            nums1[i] = aux[i]
+                nums1[i] = nums2[iT-1]
+                iT -= 1
