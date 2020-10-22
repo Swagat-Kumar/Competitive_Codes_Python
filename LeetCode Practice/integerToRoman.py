@@ -1,0 +1,41 @@
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        m = num//1000
+        ans = ''
+        ans += 'M'*m
+        num = num % 1000
+        if num >= 900:
+            num = num-900
+            ans += 'CM'
+        if num >= 500:
+            num = num-500
+            ans += 'D'
+        if num >= 400:
+            num = num-400
+            ans += 'CD'
+        c = num//100
+        ans += 'C'*c
+        num = num % 100
+        if num >= 90:
+            num = num-90
+            ans += 'XC'
+        if num >= 50:
+            num = num-50
+            ans += 'L'
+        if num >= 40:
+            num = num-40
+            ans += 'XL'
+        x = num//10
+        ans += 'X'*x
+        num = num % 10
+        if num >= 9:
+            num = num-9
+            ans += 'IX'
+        if num >= 5:
+            num = num-5
+            ans += 'V'
+        if num >= 4:
+            num = num-4
+            ans += 'IV'
+        ans += 'I'*num
+        return ans
