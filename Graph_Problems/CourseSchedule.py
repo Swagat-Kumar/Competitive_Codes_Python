@@ -24,4 +24,5 @@ class Solution:
             visited = [-1]*numCourses
             if not visit(i):
                 complete = False
+                break
         return complete
