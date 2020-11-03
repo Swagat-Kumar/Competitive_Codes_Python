@@ -8,12 +8,15 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        def visit(p=0, imin=0, imax=len(inorder)-1):
-            if p >= len(preorder) or imax < imin:
+        self.p = 0
+
+        def visit(imin=0, imax=len(inorder)-1):
+            if imax < imin:
                 return None
-            for pp in range(p, len(preorder)):
-                for j in range(imin, imax+1):
-                    if preorder[pp] == inorder[j]:
-                        return TreeNode(preorder[pp], visit(p+1, imin, j-1), visit(p+1, j+1, imax))
+            preOrder = preorder[self.p]
+            for j in range(imin, imax+1):
+                if inorder[j] == preOrder:
+                    self.p += 1
+                    return TreeNode(preOrder, visit(imin, j-1), visit(j+1, imax))
             return None
         return visit()
