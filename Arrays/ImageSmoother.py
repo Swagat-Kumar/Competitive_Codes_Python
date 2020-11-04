@@ -2,7 +2,7 @@ from math import floor
 
 
 class Solution:
-    def imageSmoother(self, M: List[List[int]]) -> List[List[int]]:
+    def imageSmoother(self, M):
         self.ones = 0
         self.n = 0
 
