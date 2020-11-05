@@ -1,13 +1,12 @@
 class Solution:
     def singleNumber(self, nums) -> int:
-        dic = {}
-        var = []
-        for n in nums:
-            if n not in dic:
-                dic[n] = 1
-                var.append(n)
-            else:
-                dic[n] += 1
-        for v in var:
-            if dic[v] == 1:
-                return v
+        nums.sort()
+        if len(nums) == 1:
+            return nums[0]
+        if nums[0] != nums[1]:
+            return nums[0]
+        for i in range(1, len(nums)-1):
+            if nums[i] != nums[i-1] and nums[i+1] != nums[i]:
+                return nums[i]
+        if nums[-1] != nums[-2]:
+            return nums[-1]
