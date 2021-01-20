@@ -12,11 +12,17 @@ def getMoneySpent(keyboards, drives, b):
     #
     # Write your code here.
     #
+    keyboards.sort()
+    drives.sort()
     maxx = -1
     for k in keyboards:
         for d in drives:
             if k+d <= b and k+d > maxx:
                 maxx = k+d
+                if maxx == b:
+                    return b
+            if k+d > b:
+                break
     return maxx
 
 
