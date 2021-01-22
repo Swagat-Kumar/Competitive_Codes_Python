@@ -1,5 +1,5 @@
 class Solution:
-    def repeatedNTimes(self, A: List[int]) -> int:
+    def repeatedNTimes(self, A) -> int:
         aux = []
         for a in A:
             if a in aux:
