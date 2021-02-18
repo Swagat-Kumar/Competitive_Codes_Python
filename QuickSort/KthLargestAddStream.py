@@ -1,6 +1,6 @@
 class KthLargest:
 
-    def __init__(self, k: int, nums: List[int]):
+    def __init__(self, k: int, nums):
         self.k = k
         nums.sort()
         self.aux = nums
