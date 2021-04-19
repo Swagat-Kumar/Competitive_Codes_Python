@@ -7,18 +7,14 @@ class ListNode:
 
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
-        first = head
+        def swap(l1, l2):
+            l1.next = l2.next
+            l2.next = l1
+            return l2
         ans = ListNode()
-        aux = ans
-        while first != None:
-            if first.next == None:
-                aux.next = ListNode(first.val)
-                aux = aux.next
-                first = None
-            else:
-                aux.next = ListNode(first.next.val)
-                aux = aux.next
-                aux.next = ListNode(first.val)
-                aux = aux.next
-                first = first.next.next
+        ans.next = head
+        pt = ans
+        while pt != None and pt.next != None and pt.next.next != None:
+            pt.next = swap(pt.next, pt.next.next)
+            pt = pt.next.next
         return ans.next
