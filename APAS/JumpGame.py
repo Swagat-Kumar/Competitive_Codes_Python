@@ -5,3 +5,4 @@ class Solution:
             if i+nums[i] >= lastPos:
                 lastPos = i
         return lastPos == 0
+# 0618
