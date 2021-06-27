@@ -7,18 +7,19 @@ class ListNode:
 
 class Solution:
     def partition(self, head: ListNode, x: int) -> ListNode:
-        ans = ListNode()
-        aux = ans
         temp = head
+        low = ListNode()
+        l = low
+        high = ListNode()
+        h = high
         while temp != None:
             if temp.val < x:
-                aux.next = ListNode(temp.val)
-                aux = aux.next
+                l.next = temp
+                l = l.next
+            else:
+                h.next = temp
+                h = h.next
             temp = temp.next
-        temp = head
-        while temp != None:
-            if temp.val >= x:
-                aux.next = ListNode(temp.val)
-                aux = aux.next
-            temp = temp.next
-        return ans.next
+        h.next = None
+        l.next = high.next
+        return low.next
